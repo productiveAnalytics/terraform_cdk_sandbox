@@ -47,16 +47,29 @@ terraform version
 10. Remove the stack: ```terraform destroy```
 
 
-## Setup cloud provider
-1. Azure
+## Setup cloud provider e.g. Azure
+1. Login
+    ```
+    az account show
+    ```
+    If not logged-in
+    ```
+    az login
+    az account set --subscription "azure-subscription-id"
+    ```
+2. Create Service Principle
+    ```
+    az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/azure-subscription-id"
+    ```
+    Save the output and run powershell e.g. ```.\azure_setup.ps1```
+3. cd terraform-azure
 ```
-az account show
-```
-If not logged-in
-```
-az login
-az account set --subscription "azure-subscription-id"
-```
+terraform init --upgrade```
+terraform plan -out "terraform_azure_plan.out"
+terraform apply "terraform_azure_plan.out"
+Confirm the creation of Resource Group in Region: "West US 2"
+terraform destroy
+``` 
 
 ## Bootstrap the project
 Create Typescript project
