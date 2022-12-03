@@ -38,13 +38,13 @@ terraform version
 1. Start Docker Desktop on Windows
 2. Ensure Docker is running: ```docker info```
 3. mkdir terraform-docker-container && cd terraform-docker-container
-4. terraform init (or better: terraform init --upgrade)
+4. ```terraform init``` (or better: ```terraform init --upgrade```)
 5. Refer Terraform & Docker script as main.tf
-6. terraform plan -out terraform_docker.out
-7. terraform apply "terraform_docker.out"
+6. ```terraform plan -out "terraform_docker_plan.out" ```
+7. ```terraform apply "terraform_docker_plan.out" ```
 8. confirm the ngnix container running: ```docker ps```
-9. Visit http://localhost:8080 (User the port suggested in main.tf)
-10. terraform destroy
+9. ```curl -sL http://localhost:8080``` or Visit http://localhost:8080 (User the port configured in main.tf)
+10. Remove the stack: ```terraform destroy```
 
 
 ## Bootstrap the project
