@@ -47,6 +47,17 @@ terraform version
 10. Remove the stack: ```terraform destroy```
 
 
+## Setup cloud provider
+1. Azure
+```
+az account show
+```
+If not logged-in
+```
+az login
+az account set --subscription "azure-subscription-id"
+```
+
 ## Bootstrap the project
 Create Typescript project
 ```cdktf init ```
